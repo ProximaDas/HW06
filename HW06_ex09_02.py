@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# HW06_ex09_02.py
+
 
 # (1)
 # Write a function called has_no_e that returns True if the given word doesn't
