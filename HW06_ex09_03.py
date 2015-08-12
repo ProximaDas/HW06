@@ -17,13 +17,65 @@
 #   - have that function print the letters and print the # of words excluded
 ##############################################################################
 # Imports
-
+from collections import Counter
 # Body
+def avoids(word,forbidden):
+	flag = ''
 
+	for letter in forbidden:
+		#Check if letter is present in word
+		if letter in word:
+			flag = False
+	if flag == False:
+		return False
+	else:
+		return True
 
+def avoids_file():
+	count = 0
+	flag = False
+	input = raw_input("Enter forbidden words: ")
+	#Open words.txt file
+	with open("words.txt","r") as handler:
+		words = handler.read().split()
+		for word in words:
+			for letter in input:
+				if not(letter in word):
+					flag = True
+				else:
+					flag = False
+					break
+			if flag == True:
+				count += 1
+
+	print "{number} words didn't contain {list}".format(number=count,list=input)
+
+def combination():
+	count = 0
+	with open("words.txt","r") as handler:
+		occurance = Counter()
+		for word in handler:
+			occurance.update(word.strip())
+	#Sort the dictionary
+	forbidden = sorted(occurance,key=occurance.get)[:5]
+	with open("words.txt","r") as handler:
+		words = handler.read().split()
+		for word in words:
+			for letter in forbidden:
+				if letter not in word:
+					flag = True
+				else:
+					flag = False
+					break
+			if flag == True:
+				count += 1
+	print ' '.join(forbidden) + " excludes the smallest number of words: " + str(count)
+		
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    # print avoids("Proxima","el")
+    # avoids_file()
+    combination()
 
 if __name__ == '__main__':
     main()

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# HW06_ex09_02.py
 
 # (1)
 # Write a function called has_no_e that returns True if the given word doesn't
@@ -13,11 +13,26 @@
 # Imports
 
 # Body
+def has_no_e(word):
+	if not('e' in word.lower()):
+		return True
+	else:
+		return False
 
-
+def has_no_e_mod(list):
+	count = 0
+	for word in list:
+		if not('e' in word.lower()):
+			print word
+			count += 1
+	# Compute percentage of words that have no "e"
+	percent = float(count)/len(list) * 100
+	print percent
+	
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    print has_no_e('Proxima')
+    has_no_e_mod(['Proxima', 'Das', 'Mohapatra', 'Etsy'])
 
 if __name__ == '__main__':
     main()

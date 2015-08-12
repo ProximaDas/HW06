@@ -17,11 +17,20 @@
 # Imports
 
 # Body
-
+def uses_only(word,letters):
+	flag = False
+	for letter in word.lower():
+		if letter in letters.lower():
+			flag = True
+		else:
+			flag = False
+			break
+	return flag		
+			
 
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    print uses_only("banana","aBn")
 
 if __name__ == '__main__':
     main()
